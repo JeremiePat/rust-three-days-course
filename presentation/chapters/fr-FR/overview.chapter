@@ -1,0 +1,133 @@
+# Introduction
+[Sommaire](toc/french.html)
+
+---
+
+## Un peu d'histoire
+
+-   Rust à environ 9 ans
+-   Un projet expérimental de Graydon Hoare
+-   Adopter par Mozilla
+-   Annoncé publiquement lors de sa version 0.4 en 2012
+-   Un truc qui ressemblait un peu à Go à l'époque
+
+---
+
+## Focus
+
+-   Rust a perdu un certain nombre de fonctionnalité entre 2012 et 2014
+    - _Garbage collector_
+    - Exécution événementielle
+    - Gestionnaire d'erreur avancé
+-   Autant de fonctionnalités retirées pour aller vars un langage de programmation système vraiment utilisable
+
+---
+
+## Développement
+
+-   Toujours accompagné par de gros projets (i.e. Servo)
+-   Publication rapide et régulière, dépréciation et passage par des RFC
+-   Bonnes méthodes de développement logiciel
+
+---
+
+## Processus de publication
+
+-   Publication quotidienne (_nightly_)
+-   Toutes les 6 semaines, la _nigthly_ courante est promus en beta
+-   Après 6 semaines de test, la beta deviens la version stable
+-   La compatibilité ascendante est garantie
+-   Facilitation des petites itérations
+
+---
+
+## Objectifs
+
+-   Êtres explicite plutôt qu'implicite
+-   Comportement d’exécution prédictible
+-   Supporter le développement de logiciel stable d'envergure
+-   Pragmatisme et facilité d'intégration
+
+---
+
+## Rust veux être utilisable avant tout !
+
+---
+
+Beaucoup d'exemple dans cette formation sont très petits. Pour cette raison, nous passerons du temps a discuter les impact de nombreuses fonctionalité sur de gros projets.
+
+---
+
+## Quatre mots-clé
+
+-   Sure
+-   Simultané
+-   Rapide
+-   Pragmatique
+
+---
+
+## Sure
+
+-   Rust est _memory-safe_
+-   Pas d'accès mémoire illégal
+-   Le désallocation est automatique
+-   Attention: Selon cette définition, les fuite de mémoire sont *sure* !
+
+---
+
+## Simultané
+
+-   "_Concurrency without fear_"
+-   Le système de types détecte les accès concurrent aux données et requiers une synchronisation
+-   Rust détecte également lorsque un accès désynchronisé est possible de manière sure !
+-   Protection contre les _data races_ !
+
+---
+
+## Rapide
+
+-   Ces propriétés sont garanties au moment de la compilation et n'ont pas de coût d’exécution !
+-   Compilateur optimisé basé sur LLVM
+-   Les fonctionnalités ayant un coût d’exécution sont explicites et difficiles à activer "par accident"
+-   Pas de réflexion (_Dracula-Language_)
+-   Distribution statique par défaut
+
+---
+
+## Pragmatique
+
+-   Sous-langage pour les accès mémoire non-sécurisés
+-   Des techniques claires pour gérer ça
+-   Excellent support des FFI (_Foreign Function Interface_)
+-   Des messages d'erreur du compilateur clairs et explicites
+-   Rust fournis une gestion des trucs difficiles et vous fait confiance pour le reste
+
+---
+
+## Fonctionnalités du langage
+
+-   Rust est un langage basé sur des expressions. Chaque expression a une valeur qui peut être assignée ou retournée.
+-   "Payez ce que vous utilisez": Les fonctionnalités de Rust ont un coût d’exécution explicites d'une manière ou d'une autre. Les fonctionnalités non-utilisés ne coûtent rien.
+
+---
+
+## D’où viennent les utilisateurs de Rust ?
+
+Plus ou moins a égalité de:
+
+-   Les utilisateurs de langages dynamiques (Ruby, Python, etc.)
+-   Les utilisateurs de langages fonctionnels (Scala, Haskell, etc.)
+-   Les utilisateurs de C/C++
+
+---
+
+## Les utilisateurs les plus connus
+
+-   Mozilla Firefox
+-   Mozilla Servo
+-   Gnome
+-   Dropbox
+-   [Rust Friends](http://rust-lang.org/friends.html)
+
+
