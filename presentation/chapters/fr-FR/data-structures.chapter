@@ -1,0 +1,67 @@
+# Structures de données
+[Sommaire](toc/french.html)
+
+---
+
+## Structures
+
+---
+
+## Définition
+
+<pre><code data-source="chapters/shared/code/data-structures/1.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Allocation
+
+<pre><code data-source="chapters/shared/code/data-structures/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Accès aux valeurs
+
+<pre><code data-source="chapters/shared/code/data-structures/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Tuples
+
+<pre><code data-source="chapters/shared/code/data-structures/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Tuples structurés
+
+<pre><code data-source="chapters/shared/code/data-structures/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Énumération
+
+<pre><code data-source="chapters/shared/code/data-structures/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+Les différents choix d'un énumération sont appelés "variante"
+
+---
+
+## Énumération avec valeur
+
+<pre><code data-source="chapters/shared/code/data-structures/7.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Énumération avec variantes structurées
+
+<pre><code data-source="chapters/shared/code/data-structures/8.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `null`
+
+Ça n'existe pas.
+
+---
+
+## Y'a-t-il des types de variante ?
+
+Non, pas pour le moment.
