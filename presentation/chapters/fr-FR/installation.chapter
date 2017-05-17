@@ -1,0 +1,92 @@
+# Installation et outils
+[Sommaire](toc/french.html)
+
+---
+
+https://www.rust-lang.org/fr-FR/install.html
+
+---
+
+## Rustup
+
+Rustup est l’outil standard pour gérer les outils de compilation de Rust.
+
+http://rustup.rs/
+
+---
+
+## Les commandes clés
+
+<pre><code data-source="chapters/shared/code/installation/1.sh" data-trim="hljs sh"></code></pre>
+
+---
+
+# Premières étapes
+
+Executez les commandes suivantes:
+
+<pre><code data-source="chapters/shared/code/installation/2.sh" data-trim="hljs sh"></code></pre>
+Cela charge les sources de la bibliothèque par défaut et la documentation pour la complétion et l'usage hors ligne.
+
+---
+
+## Les outils de compilation
+
+-   rustc
+-   cargo
+-   rustdoc
+-   rust-(lldb|gdb)
+-   libcore/libstd
+
+Le debbuger installé dépend de la plate-forme.
+
+---
+
+## rustc
+
+<pre><code data-source="chapters/shared/code/installation/3.sh" data-trim="hljs sh"></code></pre>
+Le compilateur Rust qui va générer le code et faire l'édition de liens.
+
+`rustc` est presque intégralement écrit en Rust.
+
+---
+
+## Testons Rust
+
+<pre><code data-source="chapters/shared/code/installation/4.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+<pre><code data-source="chapters/shared/code/installation/5.sh" data-trim="hljs sh"></code></pre>
+
+---
+
+## Cargo
+
+<pre><code data-source="chapters/shared/code/installation/6.sh" data-trim="hljs sh"></code></pre>
+
+---
+
+Cargo est le gestionnaire de paquets de Rust
+
+Cargo est installé en même temps que `rustc`, cependant il n'est pas liée à une version spécifique de `rustc`.
+
+---
+
+## Cargo à l'usage
+
+<pre><code data-source="chapters/shared/code/installation/7.sh" data-trim="hljs sh"></code></pre>
+
+---
+
+## Quelque éléments à noter avec Cargo
+
+-   Qu'est-ce que Cargo.toml ?
+-   Qu'est-ce que Cargo.lock ?
+
+---
+
+## Cargo permet aussi de gérer les outils
+
+<pre><code data-source="chapters/shared/code/installation/8.sh" data-trim="hljs sh"></code></pre>
+
