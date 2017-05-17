@@ -1,0 +1,114 @@
+# Syntaxe
+[Sommaire](toc/french.html)
+
+---
+
+Rust à une syntaxe dans le style de C avec des influences issuent des langages fonctionnels
+
+Les fonctionnalité spécifique seront couvert dans les autres chapitres.
+
+---
+
+## Les bases
+
+<pre><code data-source="chapters/shared/code/syntax/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `if`
+
+<pre><code data-source="chapters/shared/code/syntax/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `match`
+
+<pre><code data-source="chapters/shared/code/syntax/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `if let`
+
+<pre><code data-source="chapters/shared/code/syntax/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `loop` et `while`
+
+<pre><code data-source="chapters/shared/code/syntax/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `for` et `while let`
+
+<pre><code data-source="chapters/shared/code/syntax/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `struct`, `type` et `enum`
+
+<pre><code data-source="chapters/shared/code/syntax/7.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `impl` et `trait`
+
+<pre><code data-source="chapters/shared/code/syntax/8.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Emprunt (_Borrowing_)
+
+<pre><code data-source="chapters/shared/code/syntax/9.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Cycle de vie
+
+`'foo` peut être utilisé  pour décrire le cycle de vie des emprunts.
+
+<pre><code data-source="chapters/shared/code/syntax/10.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Porté
+
+Rust à une porté de bloc. Tout bloc peut retourner une valeur.
+
+<pre><code data-source="chapters/shared/code/syntax/11.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Closures
+
+<pre><code data-source="chapters/shared/code/syntax/12.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Type génériques
+
+<pre><code data-source="chapters/shared/code/syntax/13.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+En général on va préférer la syntaxe `where`.
+
+---
+
+## `use` et `mod`
+
+<pre><code data-source="chapters/shared/code/syntax/14.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Attributs
+
+Les attributs de Rust sont utilisés pour différentes choses. Vous trouverez la liste de tous les attributs dans la [documentation officielle](https://doc.rust-lang.org/reference/attributes.html).
+
+<pre><code data-source="chapters/shared/code/syntax/15.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Les point-virgules
+
+Une ligne sans point-virgule renvoie implicitement une valeur. Pas d'inquiétude, le compilateur vous avertira si vous oubliez vos point-virgules.
+
+<pre><code data-source="chapters/shared/code/syntax/16.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
