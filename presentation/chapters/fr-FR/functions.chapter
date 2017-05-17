@@ -1,0 +1,48 @@
+# Fonctions
+[Sommaire](toc/french.html)
+
+---
+
+## Déclaration
+
+<pre><code data-source="chapters/shared/code/functions/1.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Arguments
+
+<pre><code data-source="chapters/shared/code/functions/2.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Valeur de retour
+
+Retourner une valeur est optionnel. Cependant, La signature doit toujours être complète.
+
+<pre><code data-source="chapters/shared/code/functions/3.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Fonctions génériques
+
+Les paramètres des fonctions génériques sont nécessairement typés.
+
+<pre><code data-source="chapters/shared/code/functions/4.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Avec contraintes
+
+Les fonctions générique peuvent aussi avoir des contraintes.
+
+Ces deux signatures sont équivalentes:
+
+<pre><code data-source="chapters/shared/code/functions/5.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+# Remarques
+
+-   Les types qui n'ont pas le _trait_ `Copy` sont consommé quand ils sont passé par valeurs
+-   Retourner une référence peut nécessiter de clarifier le cycle de vie de la variable (Détails dans un prochain chapitre)
+
