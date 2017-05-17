@@ -1,0 +1,48 @@
+# Les structures generiques
+[Sommaire](toc/french.html)
+
+---
+
+Les structures génériques sont fondamentales en Rust.
+
+---
+
+## Structures génériques
+
+<pre><code data-source="chapters/shared/code/generics-basics/1.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Inférence de type
+
+Rust déterminera les types de toutes les variables et structures génériques s'il y a suffisamment d'information.
+
+Cela s'applique uniquement à l’intérieure des fonctions.
+
+En effet, les signature doivent toujours être complètes avec les définitions de type.
+
+---
+
+## Énumérations génériques
+
+<pre><code data-source="chapters/shared/code/generics-basics/2.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Énumération génériques importantes
+
+---
+
+## Option
+
+<pre><code data-source="chapters/shared/code/generics-basics/3.rs" data-trim="hljs rust"></code></pre>
+Décrit une valeur qui peut ne pas être présentes.
+
+`None` est une valeur, et elle ne doit pas être confondu avec `null`.
+
+---
+
+## Result
+
+<pre><code data-source="chapters/shared/code/generics-basics/4.rs" data-trim="hljs rust"></code></pre>
+Décrit comment une opération s'est passé et retourne au choix la valeur attendu ou une erreur.
