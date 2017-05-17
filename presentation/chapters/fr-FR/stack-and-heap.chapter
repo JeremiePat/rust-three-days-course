@@ -1,0 +1,46 @@
+# Stack et Heap
+[Sommaire](toc/french.html)
+
+---
+
+Par défaut Rust alloue sur la pile (_stack_)
+
+---
+
+## Allocation sur la pile
+
+<pre><code data-source="chapters/shared/code/stack-and-heap/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Les boites
+
+L'allocation dans le tas (_heap_) est représentée par le type `Box`.
+
+<pre><code data-source="chapters/shared/code/stack-and-heap/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Propriété et emprunt
+
+La propriété de `Box` ne peut être transmise, mais on peut tout à fait emprunter la valeur qu'elle contient.
+
+<pre><code data-source="chapters/shared/code/stack-and-heap/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Les autres allocations sur le tas
+
+D'autre type peuvent allouer sur le tas, en particulier `Vec` et `String`.
+
+---
+
+## Placement in
+
+Il est actuellement *impossible* d'allouer une valeur à un endroit spécifiquement choisie. La fonctionnalité manquante s'appelle "_placement in_"
+
+[Discussion détaillé ici](https://internals.rust-lang.org/t/lang-team-minutes-feature-status-report-placement-in-and-box/4646)
+
+---
+
+Dans la plupart des cas LLVM optimise déjà l'allocation sur la pile et les mouvement subséquent sur le tas via des allocation directes.
