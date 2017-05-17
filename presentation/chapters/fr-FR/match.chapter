@@ -1,0 +1,51 @@
+# Controle du flux avec `match`
+[Sommaire](toc/french.html)
+
+---
+
+Pour vérifier les variantes des énumération, on utilise `match`.
+
+---
+
+<pre><code data-source="chapters/shared/code/match/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Alternative: if-let
+
+<pre><code data-source="chapters/shared/code/match/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+<pre><code data-source="chapters/shared/code/match/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+`match`requière que toutes les variantes soient testées.
+
+---
+
+## Ignorer des variantes
+
+<pre><code data-source="chapters/shared/code/match/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+Results a un sens particulier, il ne peut pas être ignoré !
+
+<pre><code data-source="chapters/shared/code/match/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+Le solution: le gérer ou le passer ailleurs.
+
+---
+
+`match` ne fonctionne pas que pour les énumérations :
+
+<pre><code data-source="chapters/shared/code/match/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+`match` et `if` sont des expressions:
+
+<pre><code data-source="chapters/shared/code/match/7.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
