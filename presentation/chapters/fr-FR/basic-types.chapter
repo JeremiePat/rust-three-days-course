@@ -1,0 +1,75 @@
+# Les types de base
+[Sommaire](toc/french.html)
+
+---
+
+## Entiers
+
+Rust fournis tous les type d'entiers standards, signés ou non.
+
+-   i8, u8
+-   i16, u16
+-   i32, u32
+-   i64, u64
+-   i128, u128 (soon)
+
+---
+
+## Nombres dépendant de l'architecture
+
+Rust propose 2 types de nombre spécifiques à l'architecture de compilation :
+
+-   isize, usize
+
+---
+
+## Coercition de type
+
+Passer d'un type de nombre à un autre est possible, *y compris vers un type plus petit* :
+
+<pre><code data-source="chapters/shared/code/basic-types/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+Si la taille n'est pas précisée, ou si elle ne peut pas être inférée, le type par défaut sera `i32`.
+
+---
+
+## Dépassement
+
+Les dépassement de mémoire sont automatiquement capturé en mode _debug_ mais pas en mode _release_. Ce comportement peut être configuré.
+
+---
+
+## Flottants
+
+Rust fournis également une représentation des nombres flottants dans toutes les tailles standards: f8, f16, f32, f64
+
+<pre><code data-source="chapters/shared/code/basic-types/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Tableaux
+
+Les tableaux à taille fixe sont notés de la manière suivante :
+
+<pre><code data-source="chapters/shared/code/basic-types/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Tableaux à taille dynamique
+
+Les tableau à taille dynamique en Rust sont représenté sous forme de _slices_
+
+Les _slices_ ont in pointeur vers le tableaux associé et une longueur. Les _slices_ eux même ne peuvent pas être redimensionnés.
+
+<pre><code data-source="chapters/shared/code/basic-types/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Le type _Unit_
+
+Une expression sans valeur de retour spécifique retournera le type _unit_ `()`.
+
+<pre><code data-source="chapters/shared/code/basic-types/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
