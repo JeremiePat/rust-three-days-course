@@ -1,0 +1,100 @@
+# Borrowing
+[Sommaire](toc/french.html)
+
+---
+
+## Ce que vous possédez, vous pouvez l'emprunter
+
+---
+
+La gestion de la propriété donne une base sémantique solide, cependant, à la longue, ça devient ingérable.
+
+---
+
+La réutilisation d'une donnée après un appel de fonctions est impossible si la fonction appelée ne transfert pas à nouveau la propriété des valeurs qui lui ont été passé.
+
+---
+
+Faisons de l'emprunt (_Borrowing_) à la place.
+
+---
+
+<pre><code data-source="chapters/shared/code/borrowing/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+<pre class="diagram" data-source="chapters/shared/diagram/borrowing/1.diagram"></pre>
+
+---
+
+Vous pouvez faire des emprunts simple aussi souvent que vous en avez besoin.
+
+---
+
+Que ce passe-t-il si on veux modifier la valeur?
+
+---
+
+<pre><code data-source="chapters/shared/code/borrowing/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+Les emprunt mutable sont exclusif !
+
+---
+
+## TLes règles de l'emprunt
+
+Les valeurs peuvent êtres:
+
+-   emprunté en lecture seul aussi souvent qu'on le veux
+-   ou mutable une seule fois au même moment
+
+La propriété appartient toujours au contexte d'origine, avec la responsabilité de désallouer la mémoire.
+
+---
+
+Qu'est-ce que cela nous épargne ?
+
+---
+
+## Voyez vous un problème potentiel ?
+
+<pre><code data-source="chapters/shared/code/borrowing/3.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+Il s'en suit :
+
+-   pour tout type `T` il existe un type `&T`
+-   pour tout type `T` il existe un type `&mut T`
+-   `&&T` est un type valide
+-   `& &mut T` n'est pas un type valide. Pourquoi ?
+
+---
+
+## Les emprunts sont des références
+
+Cela signifie qu'on va devoir les déréférencer de temps en temps.
+
+<pre><code data-source="chapters/shared/code/borrowing/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Les emprunts sont lexicaux
+
+<pre><code data-source="chapters/shared/code/borrowing/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Ça, ça marche
+
+<pre><code data-source="chapters/shared/code/borrowing/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Vérifier les emprunts
+
+Parfois vous voulez accéder à la valeur interne d'une énumération, mais sans la consommer.
+
+<pre><code data-source="chapters/shared/code/borrowing/7.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
