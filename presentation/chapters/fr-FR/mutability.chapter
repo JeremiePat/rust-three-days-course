@@ -1,0 +1,34 @@
+# Mutabilité
+[Sommaire](toc/french.html)
+
+---
+
+Les langages de programmation modernes ont des attitudes différentes vis à vis de la mutabilité des variables.
+
+Quelle est la position de Rust?
+
+---
+
+## Un exemple
+
+<pre><code data-source="chapters/shared/code/mutability/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## La bonne version
+
+<pre><code data-source="chapters/shared/code/mutability/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+Avec Rust, la mutabilité doit être explicite.
+
+La mutabilité est toujours visible en lisant le code.
+
+---
+
+La mutabilité est un élément fondamental en Rust et une question que l'on se pose en permanence.
+
+---
+
+La mutabilité est une propriété des variables et des références, pas des valeurs attachées.
