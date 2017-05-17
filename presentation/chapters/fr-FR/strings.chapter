@@ -1,0 +1,120 @@
+# Les chaines
+[Sommaire](toc/french.html)
+
+---
+
+Rust propose plusieurs genre de chaines.
+
+Les plus communes sont `String` et `&str`.
+
+---
+
+## `String`
+
+-   Elles *Possèdent* les données qu'elles stock, et elles peuvent les modifier librement.
+-   Se sont des pointeur vers quelques bytes, une longueur et une capacité.
+-   Elles sont allouées sur le tas.
+-   Elles n'implémentent pas `Copy`, mais implémentent `Clone`.
+
+---
+
+## `&str`
+
+-   Une référence immuable vers une portion de chaine.
+-   Seulement vue comme une valeur empruntée.
+-   Peut être placé n’importe ou: sur la pile, dans le tas ou dans la mémoire programme.
+
+---
+
+## Création
+
+<pre><code data-source="chapters/shared/code/strings/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Quand utiliser quoi ?
+
+-   `String` est *le plus facile* à utiliser au début, on raffinera plus tard.
+-   `String` possède ses propre données, il est donc idéal pour être utilisé comme un champs d'un `struct` ou d'une énumération.
+
+-   `&'static str` fonctionne bien comme valeur constante.
+-   `&str` est typiquement utilisé dans les arguments de fonction.
+
+---
+
+## Coercition `Deref`
+
+Ce n'est parce qu'il existe plusieurs types qu'ils ne peuvent pas vivre en harmonie.
+
+<pre><code data-source="chapters/shared/code/strings/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+C'est possible parce que `String` implémente `Deref<Target=str>`.
+
+---
+
+## Les types de chaine exotiques
+
+
+-   `OsStr` et `OsString` peuvent apparaitre en travaillant avec les systèmes de fichier ou les appels système.
+
+-   `CStr` et `CString` peuvent apparaitre en travaillant avec des FFI.
+
+Les différences entre `*Str` et `*String` sont généralement identiques aux types ordinaires
+
+---
+
+## `OsString` et `OsStr`
+
+Ces types représentent les chaines _natives de la plateforme_. C'est nécessaire car les chaines Unix et Windows ont des caractéristiques différentes.
+
+---
+
+## Sous le capot des chaines `OsString`
+
+-   Les chaines Unix sont souvent des séquences arbitraire sans zéros, habituellement interprété comme de l'UTF-8.
+-   Les chaines Windows sont souvent des séquences arbitraire sans zéros, habituellement interprété comme de l'UTF-16.
+-   Les chaines Rust sont toujours de l'UTF-8 valide et pouvant contenir des zéros.
+
+`OsString` et `OsStr` font le liens entre ces chaines en permettant des conversions à faible cout depuis et vers les types `String` et `str`.
+
+---
+
+## `CString` et `CStr`
+
+Ces types représente des chaines compatible avec C.
+
+Elles sont essentiellement utilisé lors de l'utilisation de FFI avec du code externe.
+
+Il est fortement recommandé de lire *toute* la documentation de ces types avant de les utiliser.
+
+---
+
+## Opérations commune sur les chaines
+
+Découpage:
+
+<pre><code data-source="chapters/shared/code/strings/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+
+---
+
+## Opérations commune sur les chaines
+
+Concaténation:
+
+<pre><code data-source="chapters/shared/code/strings/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Opérations commune sur les chaines
+
+Remplacement:
+
+<pre><code data-source="chapters/shared/code/strings/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Accepter `String` ou `str`
+
+Il est possible d'accepter les deux quasiment sans effort:
+
+<pre><code data-source="chapters/shared/code/strings/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
