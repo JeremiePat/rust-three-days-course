@@ -1,0 +1,116 @@
+# Ownership
+[Sommaire](toc/french.html)
+
+---
+
+La gestion de la propriété (_Ownership_) et la base de la gestion de la mémoire avec Rust.
+
+---
+
+## Règles
+
+-   Chaque valeur a exactement un propriétaire
+-   La propriété peut être transféré
+-   Le propriétaire est responsable de la suppression de la donnée de la mémoire
+-   Le propriétaire à tous les droits sur la donnée et peut la modifier.
+
+---
+
+Ces règles:
+
+-   sont fondamentales au système de type de Rust
+-   sont contraintes au moment de la compilation
+-   sont pratique à de nombreux titres
+
+---
+
+## Exemple
+
+<pre><code data-source="chapters/shared/code/ownership/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+<pre class="diagram" data-source="chapters/shared/diagram/ownership/1.diagram"></pre>
+
+---
+
+Que ce passe-t-il si l'on essaye d'utiliser `dot` une deuxième fois ?
+
+---
+
+<pre><code data-source="chapters/shared/code/ownership/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Oops!
+
+---
+
+Dans le jargon de Rust, on appelle ça "consommer" (_consuming_). `pacman` consomme `dot`.
+
+La valeur ne peut plus être réutiliser.
+
+---
+
+## Ce qui se passe
+
+Lorsqu'on appelle `pacman` avec `dot`, la valeur est "déplacée" parmis les arguments de `pacman`. A ce moment, la propriété de cette valeur est transféré à `pacman`. `main` n'est plus le propriétaire de la donnée et n'est donc plus autorisé à la modifier ni même à simplement y accéder.
+
+---
+
+## Gérer les déplacements: clonage explicite.
+
+Que ce passe-t-il si ce comportement n'est pas celui souhaité? On peut créer une deuxième copie de la donnée.
+
+---
+
+<pre><code data-source="chapters/shared/code/ownership/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+<pre class="diagram" data-source="chapters/shared/diagram/ownership/2.diagram"></pre>
+
+---
+
+Le clonage est une opération générique qui, selon la complexité de la donnée, peu être couteux.
+
+---
+
+## Gérer les déplacements: Copier plutôt que cloner
+
+<pre><code data-source="chapters/shared/code/ownership/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+La copie est prévus pour les données qui peuvent être rapidement copiées en mémoire (en utilisant `memcopy`) et qui sont autorisées à l'être (i.e. pas les pointeurs de fichiers).
+
+---
+
+Les valeurs qui sont copiés suivent les règles de propriété, c'est juste qu'elles sont dupliquées lorsque la propriété est transférée.
+
+---
+
+# Attention
+
+La terminologie sur les déplacement est similaire mais pas identique à celle utilisé en C++. Pour cette raison vous devriez toujours utiliser la terminologie de Rust: Propriété (_Ownership_), Transfère de propriété (_Passing on ownership_) et consommation (_consumption_)
+
+---
+
+## Un exemple pratique
+
+<pre><code data-source="chapters/shared/code/ownership/5.rs" data-trim="hljs rust"></code></pre>
+
+Que se passerait-il si l'on pouvait utiliser File après avoir appelé ùse_file`?
+
+---
+
+## Petit quiz
+
+`drop` est la fonction qui désalloue une valeur immédiatement. A quoi ressemble son implémentation ?
+
+<pre><code data-source="chapters/shared/code/ownership/6.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+<pre><code data-source="chapters/shared/code/ownership/7.rs" data-trim="hljs rust"></code></pre>
+
