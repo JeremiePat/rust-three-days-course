@@ -1,0 +1,129 @@
+# Implémentation et Traits
+[Sommaire](toc/french.html)
+
+---
+
+Rust fournis un mécanisme pour lier des fonctions aux types.
+
+---
+
+# Attention
+
+Cela peut parfois ressembler à de la programmation orienté objet, mais ce n'est pas le cas.
+
+En particulier, le polymorphisme à l’exécution, les messages, les classes, les sous-types, et la surcharge de méthodes sont des concepts manquants.
+
+---
+
+## Implémentation simple: associer une fonction
+
+<pre><code data-source="chapters/shared/code/traits/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Remarque
+
+`new` ici n'est rien de plus qu'une convention.
+
+---
+
+## Dans le genre de Python
+
+<pre><code data-source="chapters/shared/code/traits/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Emprunt et propriété de `self`
+
+Ce n'est pas vraiment anormal, mais c'est un peu surprenant au début.
+
+-   Emprunter un valeur via une fonction va *simultanément emprunter la valeur à laquelle est attachée la fonction* (self)
+-   C'est particulièrement significatif quand on fait des emprunts mutable.
+-   `self` sans `&` va transférer la propriété de la valeur au contexte de la fonction.
+
+---
+
+## Quelques différences intéressante avec la P00 ordinaire
+
+-   Les valeurs peuvent se remplacer elles-même
+-   Les valeurs comme les itérateurs ou les constructeurs peuvent avoir des méthodes qui consomment `self` et donc qui s'invalident.
+-   Cela résout la question de l'invalidation des itérateurs.
+
+---
+
+## Note
+
+-   Les implémentations peuvent être réaliser en plusieurs fois.
+
+---
+
+## Self
+
+`Self` est un type particulier en Rust. Il fait toujours référence au type auquel l’implémentation se réfère.
+
+<pre><code data-source="chapters/shared/code/traits/3.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Traits
+
+Les traits sont la variante Rust de l'abstraction de type.
+
+---
+
+On a déjà rencontré un trait: `Debug`
+
+---
+
+Les traits définissent des types de fonctions que les types doivent implémenter. On peut les utiliser de manière générique.
+
+---
+
+<pre><code data-source="chapters/shared/code/traits/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Self
+
+`Self` est un type particulier: C'est le type qui est en train d'être implémenté.
+
+---
+
+## Traits génériques
+
+Les traits peuvent avoir des paramètres typés.
+
+---
+
+<pre><code data-source="chapters/shared/code/traits/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+Travailler avec des traits générique est très habituel.
+
+---
+
+## Inférence de traits
+
+L'inférence de type basé sur les traits est très bien géré, mais parfois, des situations indécidables se présentes. Dans ce cas, le compilateur à besoin d'aide pour savoir quoi décidé.
+
+Il y a plusieurs technique pour cela.
+
+---
+
+## UFCS
+
+_Unified Function Call Syntax_ (Syntaxe d'appel de fonction unifié)
+
+<pre><code data-source="chapters/shared/code/traits/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Types associés
+
+Les types associés sont des paramètres générique, mais il sont ignoré pendant l'inférence.
+
+---
+
+<pre><code data-source="chapters/shared/code/traits/7.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
