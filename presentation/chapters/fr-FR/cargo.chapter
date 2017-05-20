@@ -1,0 +1,202 @@
+# cargo
+[Sommaire](toc/french.html)
+
+---
+
+Cargo est la chaine d'outils de build standard pour Rust
+
+Toutes les publications de `rustc` sont fournis avec une version spécifique de cargo.
+
+Cependant, cargo est généralement indépendant de la version de `rustc` utilisée.
+
+---
+
+## Projets
+
+Un projet cargo contiens (au minimum):
+
+-   Un manifeste (Cargo.toml)
+-   Un fichier source (Bibliothèque ou Application) dans le dossier `src` (defaut)
+
+---
+
+En plus de cela, un projet cargo peut contenir:
+
+-   des tests (dossier par défaut `tests`)
+-   des benchmarks (dossier par défaut `benches`)
+-   Un script de build (défaut `build.rs`)
+-   Des exemples (dossier par défaut `examples`)
+
+---
+
+## Le manifeste
+
+Un [Cargo-Manifest](http://doc.crates.io/manifest.html) est écrit en suivant la syntaxe [TOML](http://doc.crates.io/manifest.html). Il contient au minimum le nom du projet.
+
+<pre><code data-source="chapters/shared/code/cargo/1.toml" data-trim="hljs toml"></code></pre>
+
+---
+
+## `cargo build`
+
+`cargo build` compile tout le projet et stock le résultat dans le dossier `target`.
+
+Par défaut cargo utilise le profile de debug. Cela signifie que le binaire obtenus ne serra pas optimisé et contiendra des symboles de debug.
+
+`cargo build --release` utilise le profile optimisé.
+
+---
+
+Utilisez *toujours" `--release` pour vos benchmark, l'optimisation ayant un énorme impact sur les iterateurs en particulier.
+
+---
+
+## `cargo run`
+
+Si le projet contient une application, vous pouvez la lancer en utilisant `cargo run -- [Arguments]`.
+
+S'il en contient plusieurs, le nom de binaire désiré peut être spécifié en utilisant `--bin <name>`.
+
+Par défaut ce sera le profil de debug qui sera utilisé.
+
+---
+
+## `cargo test`
+
+`cargo test` lance tous les tests. Vous pouvez spécifier un nom de test (ou de module de test) pour filtrer les tests à lancer.
+
+Par défaut, la commande de test utilise le profile de débug.
+
+Quand on dit que `cargo test` lance tous les tests, cela inclue les test présent dans la documentation et la compilation des exemples.
+
+---
+
+## `cargo bench`
+
+`cargo bench` lance tous les benchmarks.
+
+Par defaut, la commande des bechmarks utilise le profile optimisé.
+
+---
+
+## Numéros de version
+
+La communauté Rust recommande de donner des numéros de version qui suivent le standard [SemVer](https://semver.org).
+
+-   Le numéro de version majeur est incrémenté à chaque changement incompatible d'interface.
+-   Le numéro de version mineur est incrémenté à chaque introduction d'une nouvelle fonctionnalité.
+-   Le numéro de version des patchs est incrémenté pour chaque bug fixe ou amélioration de performance.
+
+---
+
+## Pre-release
+
+Si un numéro de version pour un bibliothèque est plus petit que `1`, elle est considéré comme étant une "pre-release". Concrètement, cela signifie que des changements d'interface incompatibles peuvent être introduit *à chaque incrément d'une version mineur*.
+
+---
+
+## Identifier les versions
+
+Cargo permet d'identifier un ensemble de versions de plusieurs manières :
+
+-   `1.2.3`: Numéro exact, cargo n'utilisera que cette version
+-   `0.1`: N'importe quel patch de la série "0.1"
+-   `< 0.8`: N'importe quelle version mineur inférieur à "0.8"
+
+Pour plus de détail, allez voir la [doc.](http://doc.crates.io/manifest.html)
+
+---
+
+## Rézoudre les versions
+
+Lors de la première compilation (ou lors d'un `cargo update`), cargo évalue un arbre de versions qui répondent aux contraintes définie dans le fichier Cargo.toml. Si tout se passe bien, cette évaluation sera sauvegardé dans un fichier-verrou (Cargo.lock).
+
+Il est recommandé de toujours garder ce fichier-verrou dans votre système de gestion des sources (pour pouvoir garantir des compilations cohérentes)
+
+---
+
+## Les dépendances en détail
+
+Cargo suppoerte 3 type de dépendances différentes:
+
+-   Les dépendances normales
+-   Les dépendances de build
+-   les dépendances de test
+
+---
+
+## Exemple
+
+<pre><code data-source="chapters/shared/code/cargo/2.toml" data-trim="hljs toml"></code></pre>
+
+---
+
+## Les dépendances en détail
+
+<pre><code data-source="chapters/shared/code/cargo/3.toml" data-trim="hljs toml"></code></pre>
+<pre><code data-source="chapters/shared/code/cargo/4.toml" data-trim="hljs toml"></code></pre>
+
+---
+
+## Point important
+
+Les dépendances qui ne sont pas répertoriées sur crates.io ne sont pas autorisées si votre bibliothèque doit être elle-même publié sur crates.io
+
+---
+
+## Chemins locaux
+
+Il est possible de remplacer une bibliothèque par sa version locale. Pour cela il suffit que le chemin vers celle-ci soit spécifié dans `$PROJECT_PATH/.cargo/config`.
+
+<pre><code data-source="chapters/shared/code/cargo/5.toml" data-trim="hljs toml"></code></pre>
+
+Les bibliothèques présentes ici seront utilisées en priorité. Cela permet de simplifier le test des patchs.
+
+---
+
+## Profiles
+
+Les profiles utilisé par cargo (release, bench, test...) peuvent être personnalisés. Tous les détails peuvent êtres trouvés dans [la documentation du manifeste](http://doc.crates.io/manifest.html)
+
+---
+
+## Cibles
+
+-   Les profiles et les dépendances peuvent être personnalisés en fonction de la cible de compilation.
+-   `cargo build --target ...` utilise cette cible
+-   La cible doit être pretes avant utlisation
+-   Envisagez d'utiliser xargo
+
+---
+
+## Espaces de travail
+
+Cargo peut regrouper plusieurs projet dans un espace de travail. Ils partagent alors la même configuration et le même dossier `target`.
+
+Aller lire la [documentation du manifeste](http://doc.crates.io/manifest.html) pour plus de détails.
+
+---
+
+## Fonctionnalités
+
+`rustc` à la possibilité d'ignorer certaines parties du code à la compilation. Cela se fait via l'utilisation d'indicateurs de fonctionnalités.
+
+<pre><code data-source="chapters/shared/code/cargo/6.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+On peut les définir dans le fichier `Cargo.toml`.
+
+<pre><code data-source="chapters/shared/code/cargo/7.toml" data-trim="hljs toml"></code></pre>
+
+---
+
+Ensuite il ne reste plus qu'à les utiliser comme des dépendances:
+
+<pre><code data-source="chapters/shared/code/cargo/8.toml" data-trim="hljs toml"></code></pre>
+
+---
+
+## Utiliser `rustc` directement
+
+`cargo rustc` appelle `rustc` directement tout en permettant de passer des paramètre supplémentaires.
