@@ -1,0 +1,85 @@
+# Les itérateurs
+[Sommaire](toc/french.html)
+
+---
+
+Les itérateurs en Rust sont:
+
+-   Lazy
+-   Pervasive
+-   Potentiellement infinie
+
+---
+
+## Les trouve-t-on ?
+
+-   Les collections comme `Vec<T>` ont une fonction `iter()` qui renvoie un itérateur.
+-   Les trucs comme `std::net::TcpListener` qui fournisse un itérateur de `TcpStream`s via `incoming()`.
+-   Les itérateurs peuvent aussi être implémenté sur d'autre structure.
+
+---
+
+## Usages habituels
+
+---
+
+## `next()`
+
+Les itérateurs peuvent avancer manuellement:
+
+<pre><code data-source="chapters/shared/code/iterators/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `map()`
+
+Transformer des éléments au moment de leur évaluation:
+
+<pre><code data-source="chapters/shared/code/iterators/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `filter()`
+
+Filtrer des valeurs indésirables pour ne plus avoir à les traiter:
+
+<pre><code data-source="chapters/shared/code/iterators/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `fold()`
+
+Réduire une séquence de valeurs à une valeur unique:
+
+<pre><code data-source="chapters/shared/code/iterators/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `cycle()` & `take()`
+
+Permettre aux itérateurs de se répéter ou de se terminer en avance:
+
+<pre><code data-source="chapters/shared/code/iterators/5.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `zip()` & `unzip()`
+
+Associer des itérateurs, et les séparer à nouveau :
+
+<pre><code data-source="chapters/shared/code/iterators/6.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## `max()` & `min()`
+
+<pre><code data-source="chapters/shared/code/iterators/7.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Gotcha
+
+Un truc qui ne marche pas:
+
+<pre><code data-source="chapters/shared/code/iterators/8.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+Pourquoi? (Pensez à la porté et la propriété des variables)
