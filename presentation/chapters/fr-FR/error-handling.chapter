@@ -1,0 +1,75 @@
+# La gestion des erreurs
+[Sommaire](toc/french.html)
+
+---
+
+La gestion des erreurs est explicite en Rust.
+
+Toutes les fonctions avec des conditions d'erreurs connus retourne le type `Result<T,E>`.
+
+** Il n'y a aucune exceptions.**
+
+---
+
+<pre><code data-source="chapters/shared/code/error-handling/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Les résultats doivent êtres utilisés
+
+<pre><code data-source="chapters/shared/code/error-handling/2.output" data-trim="hljs output"></code></pre>
+
+---
+
+## Utiliser les résultats via `match`
+
+<pre><code data-source="chapters/shared/code/error-handling/3.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Utiliser les réultats dans des conditions
+
+Vérifier un succès avec `is_ok()`, une erreur avec `is_err()`:
+
+<pre><code data-source="chapters/shared/code/error-handling/4.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Utiliser les résultats avec  `?`
+
+`?` s'utilise habituellement avec les fonctions susceptibles de générer de multiples erreurs.
+
+<pre><code data-source="chapters/shared/code/error-handling/5.rs" data-trim="hljs rust"></code></pre>
+
+---
+
+## Utiliser les résultats avec  `?`
+
+Output:
+
+<pre><code data-source="chapters/shared/code/error-handling/6.output" data-trim="hljs output"></code></pre>
+Remarquez la sortie de fonction anticipé.
+
+---
+
+## Les résultats sont des enveloppes
+
+Il est possible de transformer `Result<T,E>` en `Result<U,E>` sans extraire les resultats.
+
+Transformer `Result<T,E>` en `Result<T,X>` est également possible.
+
+<pre class="diagram" data-source="chapters/shared/diagram/error-handling/1.diagram"></pre>
+
+---
+
+## Adapter les valeurs des résultats
+
+<pre><code data-source="chapters/shared/code/error-handling/7.rs" data-trim="hljs rust"></code></pre>
+`map_err()` est également disponible.
+
+---
+
+## Renvoyer seulement des erreurs
+
+Si vous avez des erreurs à rapporter mais aucune données particulière à retourner, vous pouvez utiliser `Result<(), Error>`.
+
