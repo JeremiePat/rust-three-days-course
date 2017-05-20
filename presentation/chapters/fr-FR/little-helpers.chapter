@@ -1,0 +1,47 @@
+# Quelques trucs utiles
+[Sommaire](toc/french.html)
+
+---
+
+Les chaines en Rust sont un sujet à part entière
+
+En conséquence elles ont une section qui leur est dédié dans cette formation.
+
+---
+
+## Démarrer avec les chaines sans réfléchir
+
+<pre><code data-source="chapters/shared/code/little-helpers/1.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Formatage de code
+
+-   4 Espaces
+-   Pas de tabulation
+-   Les blocs démarrent sur une nouvelle ligne.
+
+---
+
+## println!()
+
+<pre><code data-source="chapters/shared/code/little-helpers/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## Que le tas soit avec toi, Luke!
+
+Au début on va utiliser:
+
+-   `String`
+-   `Vec<T>` (Vectors)
+-   Les `struct`s
+
+<pre><code data-source="chapters/shared/code/little-helpers/3.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+
+---
+
+## \#\[derive(Debug)\]
+
+<pre><code data-source="chapters/shared/code/little-helpers/4.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
+Ça marche pour toutes les structures de données.
