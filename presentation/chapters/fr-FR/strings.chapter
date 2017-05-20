@@ -3,16 +3,16 @@
 
 ---
 
-Rust propose plusieurs genre de chaines.
+Rust propose plusieurs types de chaines.
 
-Les plus communes sont `String` et `&str`.
+Les plus communs sont `String` et `&str`.
 
 ---
 
 ## `String`
 
--   Elles *Possèdent* les données qu'elles stock, et elles peuvent les modifier librement.
--   Se sont des pointeur vers quelques bytes, une longueur et une capacité.
+-   Elles *Possèdent* les données qu'elles stockent, et elles peuvent les modifier librement.
+-   Se sont des pointeurs vers quelques bytes, une longueur et une capacité.
 -   Elles sont allouées sur le tas.
 -   Elles n'implémentent pas `Copy`, mais implémentent `Clone`.
 
@@ -35,7 +35,7 @@ Les plus communes sont `String` et `&str`.
 ## Quand utiliser quoi ?
 
 -   `String` est *le plus facile* à utiliser au début, on raffinera plus tard.
--   `String` possède ses propre données, il est donc idéal pour être utilisé comme un champs d'un `struct` ou d'une énumération.
+-   `String` possède ses propre données, il est donc idéal pour être utilisé dans un `struct` ou une énumération.
 
 -   `&'static str` fonctionne bien comme valeur constante.
 -   `&str` est typiquement utilisé dans les arguments de fonction.
@@ -44,7 +44,7 @@ Les plus communes sont `String` et `&str`.
 
 ## Coercition `Deref`
 
-Ce n'est parce qu'il existe plusieurs types qu'ils ne peuvent pas vivre en harmonie.
+Ce n'est pas parce qu'il existe plusieurs types qu'ils ne peuvent pas vivre en harmonie.
 
 <pre><code data-source="chapters/shared/code/strings/2.rs" data-trim="hljs rust" class="lang-rust"></code></pre>
 C'est possible parce que `String` implémente `Deref<Target=str>`.
@@ -72,7 +72,7 @@ Ces types représentent les chaines _natives de la plateforme_. C'est nécessair
 
 -   Les chaines Unix sont souvent des séquences arbitraire sans zéros, habituellement interprété comme de l'UTF-8.
 -   Les chaines Windows sont souvent des séquences arbitraire sans zéros, habituellement interprété comme de l'UTF-16.
--   Les chaines Rust sont toujours de l'UTF-8 valide et pouvant contenir des zéros.
+-   Les chaines Rust sont toujours de l'UTF-8 valide et peuvent contenir des zéros.
 
 `OsString` et `OsStr` font le liens entre ces chaines en permettant des conversions à faible cout depuis et vers les types `String` et `str`.
 
@@ -80,9 +80,9 @@ Ces types représentent les chaines _natives de la plateforme_. C'est nécessair
 
 ## `CString` et `CStr`
 
-Ces types représente des chaines compatible avec C.
+Ces types représente des chaines compatibles avec C.
 
-Elles sont essentiellement utilisé lors de l'utilisation de FFI avec du code externe.
+Elles sont essentiellement utilisées lors de l'utilisation de FFI avec du code externe.
 
 Il est fortement recommandé de lire *toute* la documentation de ces types avant de les utiliser.
 
